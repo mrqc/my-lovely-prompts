@@ -1,0 +1,33 @@
+<form [formGroup]="promptForm" (ngSubmit)="save()" class="prompt-form">
+  <h1>Create/Edit Prompt</h1>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Slug</mat-label>
+    <input matInput formControlName="slug" [disabled]="true" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Model</mat-label>
+    <mat-select formControlName="model" required>
+      @for (model of models; track model) {
+        <mat-option [value]="model">{{ model }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Text</mat-label>
+    <textarea matInput formControlName="text" required rows="20" placeholder="Use placeholder: &#123;somePlaceHolder&#125;" ></textarea>
+    <mat-hint align="start">Use placeholder: &#123;somePlaceHolder&#125; which can be filled up later</mat-hint>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!promptForm.valid">
+    Save
+  </button>
+</form>

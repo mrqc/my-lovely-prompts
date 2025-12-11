@@ -1,0 +1,22 @@
+<nav class="nav">
+  <button class="material-btn" [routerLink]="['/prompt']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="Create new prompt">
+    <span class="material-icon" aria-hidden="true">
+      <mat-icon>add</mat-icon>
+    </span>
+    <span class="btn-text">New Prompt</span>
+  </button>
+  @for (prompt of prompts; track prompt) {
+    <div class="prompt-row">
+      <a [routerLink]="['/prompt', prompt.slug]"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        {{ prompt.slug }}
+      </a>
+      <span class="icon-group">
+        <span class="icon copy-icon" title="Enhanced copy prompt" (click)="openEnhancedCopy(prompt)"><mat-icon>file_copy</mat-icon></span>
+        <span class="icon copy-icon" title="Copy prompt" (click)="copyPrompt(prompt)"><mat-icon>content_copy</mat-icon></span>
+        <span class="icon delete-icon" title="Delete prompt" (click)="deletePrompt(prompt)"><mat-icon>delete</mat-icon></span>
+      </span>
+    </div>
+  }
+</nav>

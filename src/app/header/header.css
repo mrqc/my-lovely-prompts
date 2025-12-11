@@ -1,0 +1,7 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+  font-weight: 600;
+}

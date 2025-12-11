@@ -1,0 +1,16 @@
+<form class="prompt-form">
+  <h1>Copy Prompt with filled Placeholders</h1>
+
+  <p style="white-space: pre-line;">{{ prompt?.text }}</p>
+
+  @for (placeholder of placeholders; track placeholder) {
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>{{ placeholder }}</mat-label>
+      <input matInput type="text" [id]="'placeholder-' + placeholder" />
+    </mat-form-field>
+  }
+  <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copy()">
+    Copy
+  </button>
+
+</form>

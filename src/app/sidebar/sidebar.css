@@ -1,0 +1,63 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+.nav a {
+  color: #333;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+.nav a.active {
+  background: #e9f0ff;
+  color: #1a73e8;
+}
+.material-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(26,115,232,0.12);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.material-btn:hover, .material-btn:focus {
+  background: #1761c7;
+  box-shadow: 0 4px 12px rgba(26,115,232,0.18);
+}
+.material-icon {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+.btn-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+.prompt-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+.prompt-row a {
+  flex: 1;
+}
+.icon-group {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.copy-icon, .delete-icon {
+  cursor: pointer;
+}
+.copy-icon mat-icon, .delete-icon mat-icon {
+  font-size: 16px;
+  vertical-align: middle;
+}
