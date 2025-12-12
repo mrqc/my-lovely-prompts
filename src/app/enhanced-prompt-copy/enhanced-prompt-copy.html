@@ -9,8 +9,14 @@
       <input matInput type="text" [id]="'placeholder-' + placeholder" />
     </mat-form-field>
   }
-  <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copy()">
-    Copy
-  </button>
+  <div class="button-row">
+    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copy()">
+      Copy
+    </button>
+    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="openInModelPlayground()">
+      Open in Model Playground
+    </button>
+  </div>
+
 
 </form>

@@ -4,9 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export interface Prompt {
   slug: string;
   name: string;
-  model: string;
-  created_at: string;
-  updated_at: string;
+  modelId: string;
+  createdAt: string;
+  updatedAt: string;
   text: string;
 }
 

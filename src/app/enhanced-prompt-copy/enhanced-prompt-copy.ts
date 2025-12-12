@@ -52,4 +52,8 @@ export class EnhancedPromptCopy {
       this.snackBar.open('Copied prompt text with filled placeholder!', 'OK', { duration: 1500 });
     }
   }
+
+  openInModelPlayground() {
+
+  }
 }

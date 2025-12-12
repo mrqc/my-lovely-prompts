@@ -18,3 +18,10 @@ button.button-copy {
   align-self: flex-end;
   margin-top: 8px;
 }
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-end;
+}
