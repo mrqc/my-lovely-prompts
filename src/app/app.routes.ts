@@ -7,6 +7,7 @@ export const routes: Routes = [
   { path: '', component: MainContent },
   { path: 'prompt', component: PromptForm },
   { path: 'prompt/:slug', component: PromptForm },
+  { path: 'prompt/:slug/name/:name/model/:model/text/:text', component: PromptForm },
   { path: 'copy/:slug', component: EnhancedPromptCopy },
   { path: '**', redirectTo: '' }
 ];

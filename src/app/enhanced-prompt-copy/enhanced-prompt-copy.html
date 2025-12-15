@@ -3,12 +3,21 @@
 
   <p style="white-space: pre-line;">{{ prompt?.text }}</p>
 
-  @for (placeholder of placeholders; track placeholder) {
-    <mat-form-field appearance="fill" class="form-field">
-      <mat-label>{{ placeholder }}</mat-label>
-      <input matInput type="text" [id]="'placeholder-' + placeholder" />
-    </mat-form-field>
+  <div class="placeholder-count-control" style="margin-bottom: 1em; display: flex; align-items: center; gap: 0.5em;">
+    <label for="placeholder-count">Iterations:</label>
+    <input id="placeholder-count" type="number" min="1" [value]="placeholderCount" (input)="onPlaceholderCountInput($event)" style="width: 3em; text-align: center;" />
+  </div>
+
+  @for (count of Array.from(Array(placeholderCount).keys()); track count) {
+    <h3>{{count + 1}}. Iteration</h3>
+    @for (placeholder of placeholders; track placeholder) {
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>{{ placeholder }}</mat-label>
+        <input matInput type="text" [id]="'placeholder-' + count + '-' + placeholder" />
+      </mat-form-field>
+    }
   }
+
   <div class="button-row">
     <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copy()">
       Copy
@@ -17,6 +26,4 @@
       Open in Model Playground
     </button>
   </div>
-
-
 </form>
