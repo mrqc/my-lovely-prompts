@@ -7,6 +7,14 @@
     <label for="placeholder-count">Iterations:</label>
     <input id="placeholder-count" type="number" min="1" [value]="placeholderCount" (input)="onPlaceholderCountInput($event)" style="width: 3em; text-align: center;" />
   </div>
+  <div class="l" style="margin-bottom: 1em; display: flex; align-items: center; gap: 0.5em;">
+    <label for="model">Model:</label>
+    <mat-select id="model" [(value)]="selectedModelId" style="width: 500px;">
+      @for (model of modelService.getModels(); track model) {
+        <mat-option [value]="model.id">{{ model.name }}</mat-option>
+      }
+    </mat-select>
+  </div>
 
   @for (count of Array.from(Array(placeholderCount).keys()); track count) {
     <h3>{{count + 1}}. Iteration</h3>
@@ -16,10 +24,13 @@
         <input matInput type="text" [id]="'placeholder-' + count + '-' + placeholder" />
       </mat-form-field>
     }
+    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copyIteration(count)">
+      Copy {{count + 1}}. Iteration
+    </button>
   }
 
   <div class="button-row">
-    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copy()">
+    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copyAllIterations()">
       Copy
     </button>
     <button class="button-copy" mat-raised-button color="primary" type="button" (click)="openInModelPlayground()">

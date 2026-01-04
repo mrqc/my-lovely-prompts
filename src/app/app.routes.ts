@@ -5,9 +5,11 @@ import {EnhancedPromptCopy} from './enhanced-prompt-copy/enhanced-prompt-copy';
 
 export const routes: Routes = [
   { path: '', component: MainContent },
+  { path: 'collection/:slug', component: MainContent },
   { path: 'prompt', component: PromptForm },
   { path: 'prompt/:slug', component: PromptForm },
   { path: 'prompt/:slug/name/:name/model/:model/text/:text', component: PromptForm },
   { path: 'copy/:slug', component: EnhancedPromptCopy },
+  { path: 'copy', component: EnhancedPromptCopy },
   { path: '**', redirectTo: '' }
 ];

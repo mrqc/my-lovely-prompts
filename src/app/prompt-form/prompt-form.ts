@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {Prompt, PromptService} from '../prompt.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Model, ModelService} from '../model.service';
@@ -28,7 +28,8 @@ export class PromptForm {
     private promptService: PromptService,
     private modelService: ModelService,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private router: Router) {
     this.models = this.modelService.getModels();
     this.promptForm = this.formBuilder.group({
       slug: [{ value: '', disabled: true }, Validators.required],
@@ -36,20 +37,6 @@ export class PromptForm {
       text: ['', Validators.required],
       modelId: [this.models[0].id, Validators.required]
     });
-
-    const slug = this.route.snapshot.paramMap.get('slug');
-    const name = this.route.snapshot.paramMap.get('name');
-    const modelId = this.route.snapshot.paramMap.get('model');
-    const text = this.route.snapshot.paramMap.get('text');
-    if (name && modelId && text && slug) {
-      this.promptForm.patchValue({
-        slug: slug,
-        name: name,
-        text: text,
-        modelId: modelId
-      });
-      return;
-    }
 
     this.route.paramMap.subscribe(params => {
       this.activePromptSlug = params.get('slug') ?? undefined;
@@ -65,6 +52,29 @@ export class PromptForm {
         }
       }
     });
+
+    const slug = this.route.snapshot.paramMap.get('slug');
+    const name = this.route.snapshot.paramMap.get('name');
+    const modelId = this.route.snapshot.paramMap.get('model');
+    const text = this.route.snapshot.paramMap.get('text');
+    if (name && modelId && text && slug) {
+      this.promptForm.patchValue({
+        slug: slug,
+        name: decodeURIComponent(name),
+        text: decodeURIComponent(text),
+        modelId: modelId
+      });
+    }
+    const navigation = this.router.currentNavigation();
+    const promptToCreate: Prompt = navigation?.extras.state?.['prompt'];
+    if (promptToCreate) {
+      this.promptForm.patchValue({
+        slug: promptToCreate.slug,
+        name: promptToCreate.name,
+        text: promptToCreate.text,
+        modelId: promptToCreate.modelId
+      });
+    }
 
     this.promptForm.get('name')?.valueChanges.subscribe((value: string) => {
       const normalizedSlug = this.normalizeSlug(value);
