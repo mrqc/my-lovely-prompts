@@ -24,17 +24,25 @@
         <input matInput type="text" [id]="'placeholder-' + count + '-' + placeholder" />
       </mat-form-field>
     }
-    <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copyIteration(count)">
-      Copy {{count + 1}}. Iteration
-    </button>
+    <div class="button-row">
+      <button class="button-copy" mat-raised-button color="primary" type="button" (click)="openIterationInPlayground(count)">
+        Open {{count + 1}}. Iteration in Model Playground
+      </button>
+      <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copyIteration(count)">
+        Copy {{count + 1}}. Iteration
+      </button>
+    </div>
+    <mat-divider></mat-divider>
   }
+
+
 
   <div class="button-row">
     <button class="button-copy" mat-raised-button color="primary" type="button" (click)="copyAllIterations()">
-      Copy
+      Copy All Iterations
     </button>
     <button class="button-copy" mat-raised-button color="primary" type="button" (click)="openInModelPlayground()">
-      Open in Model Playground
+      Open All Iterations in Model Playground
     </button>
   </div>
 </form>

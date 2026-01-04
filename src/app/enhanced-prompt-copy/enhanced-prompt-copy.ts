@@ -8,10 +8,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { ModelService } from '../model.service';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-enhanced-prompt-copy',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, MatSelectModule, ReactiveFormsModule],
+  imports: [MatDividerModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './enhanced-prompt-copy.html',
   styleUrl: './enhanced-prompt-copy.css',
 })
@@ -150,5 +151,20 @@ export class EnhancedPromptCopy {
       });
       this.snackBar.open('Copied prompt text with filled placeholder!', 'OK', { duration: 1500 });
     }
+  }
+
+  openIterationInPlayground(iteration: number) {
+    if ( !this.prompt) {
+      this.snackBar.open('No prompt loaded.', 'Dismiss', { duration: 1500 });
+      return;
+    }
+    const model = this.modelService.getModelById(this.selectedModelId);
+    if ( !model || !model.playgroundUrl) {
+      this.snackBar.open('No playground URL available for this model.', 'Dismiss', { duration: 1500 });
+      return;
+    }
+    let url = model.playgroundUrl
+      .replace('{prompt}', encodeURIComponent(this.getFilledPrompt(iteration)));
+    window.open(url, '_blank');
   }
 }
