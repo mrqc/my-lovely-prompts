@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration=production --base-href=/my-lovely-prompts/dist/browser/ --output-path=dist",
+    "build": "ng build --configuration=production --base-href=/my-lovely-prompts/dist/browser/ --output-path=dist; cp htaccess dist/browser/.htaccess",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

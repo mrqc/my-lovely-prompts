@@ -3,6 +3,7 @@ import {ActivatedRoute, RouterModule, Router} from '@angular/router';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Prompt} from '../prompt.service';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 
 interface PromptCollection {
@@ -14,7 +15,7 @@ interface PromptCollection {
 @Component({
   selector: 'app-main-content',
   standalone: true,
-  imports: [RouterModule, HttpClientModule, MatCardModule],
+  imports: [RouterModule, HttpClientModule, MatCardModule, MatButtonModule],
   templateUrl: './main-content.html',
   styleUrl: './main-content.css',
   changeDetection: ChangeDetectionStrategy.OnPush

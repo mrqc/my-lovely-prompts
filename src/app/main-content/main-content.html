@@ -1,13 +1,15 @@
 <h3>{{ title }}</h3>
 <p>{{ description }}</p>
-@for (prompt of prompts; track prompt) {
-  <mat-card class="prompt-card">
-    <mat-card-header>
-      <mat-card-title>{{ prompt.name }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="goToCopyEnhancedPrompt(prompt)">Copy Prompt</button>
-      <button mat-button color="primary" (click)="goToSavePrompt(prompt)">Save Prompt</button>
-    </mat-card-actions>
-  </mat-card>
-}
+<div class="prompt-card-container">
+  @for (prompt of prompts; track prompt) {
+    <mat-card class="prompt-card">
+      <mat-card-header>
+        <mat-card-title>{{ prompt.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToCopyEnhancedPrompt(prompt)">Copy Prompt</button>
+        <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToSavePrompt(prompt)">Save Prompt</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>
