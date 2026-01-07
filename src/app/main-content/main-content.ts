@@ -30,7 +30,7 @@ export class MainContent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private changeDetectionRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class MainContent implements OnInit {
         return;
       }
 
-      this.http.get<PromptCollection>(`/prompt-collections/${slug}.json`)
+      this.http.get<PromptCollection>(`prompt-collections/${slug}.json`)
         .subscribe({
           next: data => {
             this.prompts = data.prompts;
