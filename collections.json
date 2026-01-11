@@ -1,7 +1,8 @@
 {
   "collections": [
     {
-      "id": 1,
+      "slug": "startup-creator-prompts",
+      "title": "Startup Creator Prompts",
       "file": "startup-creator-prompts.json"
     }
   ]
