@@ -5,7 +5,7 @@
     </span>
     <span class="btn-text">New Prompt</span>
   </button>
-  @for (prompt of storedUserPrompts; track prompt) {
+  @for (prompt of storedUserPrompts; track prompt.slug) {
     <div class="prompt-row">
       <a [routerLink]="['/prompt', prompt.slug]"
          routerLinkActive="active"
@@ -22,7 +22,7 @@
 
   <mat-divider></mat-divider>
 
-  @for (collection of collections; track collection) {
+  @for (collection of collections; track collection.slug) {
     <div class="collection-row">
       <a [routerLink]="['/collection', collection.slug]"
          routerLinkActive="active"

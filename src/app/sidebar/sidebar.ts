@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MatDivider} from '@angular/material/divider';
+import { ChangeDetectorRef } from '@angular/core';
 
 interface CollectionReference {
   slug: string;
@@ -21,7 +22,7 @@ interface Collections {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule, MatIcon, MatDivider],
+  imports: [RouterModule, MatIcon, MatDivider, HttpClientModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
@@ -36,6 +37,7 @@ export class Sidebar implements OnInit, OnDestroy {
     private router: Router,
     private snackBar: MatSnackBar,
     private http: HttpClient,
+    private cdr: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
@@ -46,13 +48,15 @@ export class Sidebar implements OnInit, OnDestroy {
         this.storedUserPrompts = list;
       });
     this.storedUserPrompts = this.promptService.getAllPrompts();
-    this.http.get<Collections>(`collections.json`)
+    this.http.get<Collections>(`collections.json?t=${Date.now()}`)
       .subscribe({
         next: data => {
-          this.collections = data.collections;
+          this.collections = data.collections.slice();
+          this.cdr.detectChanges();
         },
         error: () => {
           this.collections = [];
+          this.cdr.detectChanges();
         },
       });
   }

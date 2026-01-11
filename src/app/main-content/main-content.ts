@@ -46,7 +46,7 @@ export class MainContent implements OnInit {
             this.changeDetectionRef.markForCheck();
           },
           error: () => {
-              this.collection = null;
+            this.collection = null;
             this.changeDetectionRef.markForCheck();
           },
         });
