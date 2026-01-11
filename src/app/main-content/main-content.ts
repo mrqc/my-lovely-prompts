@@ -10,6 +10,7 @@ interface PromptCollection {
   prompts: Prompt[];
   title: string;
   description: string;
+  source: string;
 }
 
 @Component({
@@ -25,6 +26,7 @@ export class MainContent implements OnInit {
   prompts: Prompt[] = [];
   title: string = "";
   description: string = "";
+  source: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +48,7 @@ export class MainContent implements OnInit {
             this.prompts = data.prompts;
             this.title = data.title;
             this.description = data.description;
+            this.source = data.source;
             this.changeDetectionRef.markForCheck();
           },
           error: () => {

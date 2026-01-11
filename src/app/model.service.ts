@@ -12,7 +12,7 @@ export interface Model {
 })
 export class ModelService {
   private models: Model[] = [
-    { name: "Generic", playgroundUrl: "", id: "generic", vendorSpecificId: "" },
+    { name: "Generic (ChatGPT)", playgroundUrl: "https://chat.openai.com/?q={prompt}", id: "generic", vendorSpecificId: "" },
     { name: "OpenAI Gpt 4 0613", playgroundUrl: "https://chat.openai.com/?model=gpt-4-0613&q={prompt}", id: "openapi-gpt-4-0613", vendorSpecificId: "gpt-4-0613" },
     { name: "OpenAI Gpt 5.2 Chat Latest", playgroundUrl: "https://chat.openai.com/?model=gpt-5.2-chat-latest&q={prompt}", id: "openapi-gpt-5.2-chat-latest", vendorSpecificId: "gpt-5.2-chat-latest" },
     { name: "OpenAI Gpt 5.2 2025 12 11", playgroundUrl: "https://chat.openai.com/?model=gpt-5.2-2025-12-11&q={prompt}", id: "openapi-gpt-5.2-2025-12-11", vendorSpecificId: "gpt-5.2-2025-12-11" },

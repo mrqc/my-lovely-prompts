@@ -4,32 +4,57 @@ import {Prompt, PromptService} from '../prompt.service';
 import {Subject, takeUntil} from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MatDivider} from '@angular/material/divider';
+
+interface CollectionReference {
+  slug: string;
+  title: string;
+  source: string;
+  file: string;
+}
+
+interface Collections {
+  collections: CollectionReference[];
+}
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule, MatIcon],
+  imports: [RouterModule, MatIcon, MatDivider],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
 export class Sidebar implements OnInit, OnDestroy {
 
-  prompts: Prompt[] = [];
+  storedUserPrompts: Prompt[] = [];
+  collections: CollectionReference[] = [];
   private destroy$ = new Subject<void>();
 
   constructor(
     private promptService: PromptService,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private http: HttpClient,
+    ) { }
 
   ngOnInit() {
     this.promptService
       .onPromptsChanged()
       .pipe(takeUntil(this.destroy$))
       .subscribe((list) => {
-        this.prompts = list;
+        this.storedUserPrompts = list;
       });
-    this.prompts = this.promptService.getAllPrompts();
+    this.storedUserPrompts = this.promptService.getAllPrompts();
+    this.http.get<Collections>(`collections.json`)
+      .subscribe({
+        next: data => {
+          this.collections = data.collections;
+        },
+        error: () => {
+          this.collections = [];
+        },
+      });
   }
 
   ngOnDestroy(): void {
