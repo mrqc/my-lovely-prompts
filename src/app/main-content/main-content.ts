@@ -23,10 +23,7 @@ interface PromptCollection {
 })
 export class MainContent implements OnInit {
 
-  prompts: Prompt[] = [];
-  title: string = "";
-  description: string = "";
-  source: string = "";
+  collection: PromptCollection | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,16 +42,11 @@ export class MainContent implements OnInit {
       this.http.get<PromptCollection>(`prompt-collections/${slug}.json`)
         .subscribe({
           next: data => {
-            this.prompts = data.prompts;
-            this.title = data.title;
-            this.description = data.description;
-            this.source = data.source;
+            this.collection = data;
             this.changeDetectionRef.markForCheck();
           },
           error: () => {
-            this.prompts = [];
-            this.title = '';
-            this.description = '';
+              this.collection = null;
             this.changeDetectionRef.markForCheck();
           },
         });

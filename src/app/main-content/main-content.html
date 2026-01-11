@@ -1,16 +1,18 @@
-<h3>{{ title }}</h3>
-<p>Source: <a href="{{ source }}" target="_blank">{{ source }}</a></p>
-<p>{{ description }}</p>
-<div class="prompt-card-container">
-  @for (prompt of prompts; track prompt) {
-    <mat-card class="prompt-card">
-      <mat-card-header>
-        <mat-card-title>{{ prompt.name }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-actions>
-        <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToCopyEnhancedPrompt(prompt)">Copy Prompt</button>
-        <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToSavePrompt(prompt)">Save Prompt</button>
-      </mat-card-actions>
-    </mat-card>
-  }
-</div>
+@if (collection) {
+    <h3>{{ collection.title }}</h3>
+    <p>Source: <a href="{{ collection.source }}" target="_blank">{{ collection.source }}</a></p>
+    <p>{{ collection.description }}</p>
+    <div class="prompt-card-container">
+        @for (prompt of collection.prompts; track prompt) {
+            <mat-card class="prompt-card">
+                <mat-card-header>
+                    <mat-card-title>{{ prompt.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-actions>
+                    <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToCopyEnhancedPrompt(prompt)">Copy Prompt</button>
+                    <button mat-raised-button type="button" class="collection-entry" color="primary" (click)="goToSavePrompt(prompt)">Save Prompt</button>
+                </mat-card-actions>
+            </mat-card>
+        }
+    </div>
+}
