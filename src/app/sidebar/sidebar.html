@@ -10,7 +10,7 @@
       <a [routerLink]="['/prompt', prompt.slug]"
          routerLinkActive="active"
          [routerLinkActiveOptions]="{ exact: true }">
-        {{ prompt.slug }}
+        {{ prompt.name }}
       </a>
       <span class="icon-group">
         <span class="icon copy-icon" title="Enhanced copy prompt" (click)="openEnhancedCopy(prompt)"><mat-icon>file_copy</mat-icon></span>
