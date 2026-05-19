@@ -70,11 +70,14 @@ export class EnhancedPromptCopy {
     if ( !this.prompt) {
       return '';
     }
-    let promptText = this.prompt.text;
     let filledPrompt = '';
-    Array.from(Array(this.placeholderCount).keys()).forEach(count => {
-      filledPrompt += this.getFilledPrompt(count);
-    });
+    if (this.placeholderCount > 0) {
+      Array.from(Array(this.placeholderCount).keys()).forEach(count => {
+        filledPrompt += this.getFilledPrompt(count);
+      });
+    } else {
+      filledPrompt = this.prompt.text;
+    }
     return filledPrompt;
   }
 
