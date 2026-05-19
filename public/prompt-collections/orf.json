@@ -1,0 +1,13 @@
+{
+  "title": "ORF Bewerbung",
+  "source": "https://der.orf.at/unternehmen/aktuell/ausschreibung_gd100.html",
+  "description": "Zur Bewerbung als Generaldirektor beim ORF.",
+  "prompts": [
+    {
+      "slug": "orf-general-direktor-bewerbung",
+      "modelId": "chatgpt",
+      "name": "ORF Genraldirektor Bewerbung",
+      "text": "Ich benötige einen Text, den ich zur Bewerbung für die Ausschreibung von https://der.orf.at/unternehmen/aktuell/ausschreibung_gd100.html senden kann. Stelle mir eine ausführliche Bewerbung zusammen basierend auf meinem Lebenslauf, den ich dir zur Verfügung stelle. Schreibe alles auf Deutsch. Gib nur den Text zurück und sonst nichts. Als Gründe warum ich geeignet bin, füge auf jeden Fall an, dass ich Zeit habe und jung bin und das Geld gut gebrauchen kann."
+    }
+  ]
+}
