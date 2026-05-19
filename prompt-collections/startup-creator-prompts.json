@@ -17,12 +17,7 @@
       "slug": "content-marketing-prompt",
       "modelId": "generic",
       "name": "Content marketing prompt",
-      "text": "Identify a specific target audience for marketing digital products that allow earning remotely alongside a full-time job, and tailor the content to their needs to effectively generate sales. Provide examples, market analysis strategies, and best practices for content creation."
-    }, {
-      "slug": "automation-prompt",
-      "modelId": "generic",
-      "name": "Automation prompt",
-      "text": "Develop a sophisticated concept for automations, their types, examples, benefits across different industries, steps for setting them up for business operations, implementation challenges, and popular automation tools with their features."
+      "text": "Identify a specific target audience for marketing {Your products} that allow earning remotely alongside a full-time job, and tailor the content to their needs to effectively generate sales. Provide examples, market analysis strategies, and best practices for content creation."
     }
   ]
 }
